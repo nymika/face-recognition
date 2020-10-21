@@ -63,6 +63,8 @@ def classify_face(im):
     cv2.imshow(img)
         #if cv2.waitKey(1) & 0xFF == ord('q'):
     return face_names
+    cv1.imshow(img)
+    return face_names
 
 
 print(classify_face('/content/drive/My Drive/crazy_train.jpeg'))
