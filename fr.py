@@ -65,6 +65,19 @@ def classify_face(im):
     return face_names
     cv1.imshow(img)
     return face_names
+    def get_data_from_keyword(key) :
+    res = youtube.search().list(q = key, part = 'snippet', type = 'video',maxResults = 50).execute()
+    import csv
+    with open('Main.csv','a+', newline='',encoding="utf-8") as f:
+         fieldnames = ['Video ID','Channel Name', 'Channel ID']
+         writer = csv.DictWriter(f,fieldnames = fieldnames)
+        
+         for item in res['items'] :
+              print(item['snippet']['channelId'],item['snippet']['channelTitle'],item['id']['videoId'])
+              writer.writerow({'Video ID' :item['id']['videoId'],
+                               'Channel Name' :item['snippet']['channelTitle'],
+                               'Channel ID' : item['snippet']['channelId']})
+#To take the input of keywords from Input.csv file
 
 
 print(classify_face('/content/drive/My Drive/crazy_train.jpeg'))
